@@ -1,4 +1,10 @@
 
+  
+const board = document.getElementById("board");
+
+const domain = `https://api.trello.com`;
+const apiAccess = `key=${APIKey}&token=${token}`;
+console.log(apiAccess);
 
 // get a specific board and
 // let allBoards, list;
@@ -40,8 +46,8 @@ const getAllCards = async function() {
   const cards = await fetch(urls.getAllCards(lists[2]["id"])).then(cards =>
     cards.json()
   );
-    let namesOfCards = cards.map(card => card['name'])
-//   console.log(cards);
+  let namesOfCards = cards.map(card => card["name"]);
+  //   console.log(cards);
   console.log(namesOfCards);
 };
 
