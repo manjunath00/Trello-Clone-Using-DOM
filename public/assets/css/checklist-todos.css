@@ -1,0 +1,55 @@
+.window-main-col--checklist-items  * {
+    /* outline: 1px solid #000; */
+}
+
+.checklistItem {
+    display: grid;
+    grid-template-columns: 10% 85% 5%;
+}
+
+.todo-text,
+.todo-action,
+.todo-status {
+  padding: 0.5rem;
+}
+
+.todo-text {
+  font-size: 1rem;
+}
+
+.todo-action {
+  visibility: hidden;
+}
+
+.checklistItem:hover .todo-action {
+  visibility: visible;
+}
+
+.todo:hover {
+  border: 2px solid blue;
+  background-color: grey;
+  border-radius: 10px;
+}
+
+.todo-action button {
+  /* background-image: url("../icons8-trash.svg"); */
+  background-image: url("https://icomoon.io/icons0988ea6/5/259.svg");
+  background-size: cover;
+  width: 10px;
+  height: 10px;
+  border: none;
+  /* background-color: blue; */
+}
+
+.completed {
+  text-decoration: line-through;
+  /* color: #d9d9d9; */
+}
+
+
+.dragging {
+  /* transform: rotate(15deg); */
+  opacity: 0.25;
+  /* display: none; */
+  /* visibility: hidden; */
+}

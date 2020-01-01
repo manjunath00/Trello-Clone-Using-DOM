@@ -1,0 +1,141 @@
+.modal--container {
+  background-color: #000;
+  /* display: flex; */
+  /* justify-content: center; */
+  overflow: scroll;
+  /* opacity: 0.7; */
+}
+
+.hidden {
+  display: none !important;
+}
+.card-detail-window {
+  width: 770px;
+  min-height: 800px;
+  background-color: #f4f5f7;
+  margin: 2rem auto;
+  /* overflow: scroll; */
+}
+
+
+
+.card-detail-close .grey-btn {
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+.card-detail-close .grey-btn:hover {
+  background-color: #000;
+  color: #fff;
+  font-weight: bold;
+}
+
+.window-header-icon {
+  /* width: 250px; */
+  /* height: 250px;  */
+}
+.window-header {
+  margin: 1rem 0;
+}
+
+.window-main-col--description,
+.window-main-col--activity {
+  margin: 1rem 0;
+  /* padding: rem 0; */
+}
+
+.window-main-col--activity {
+  margin: 2rem 0;
+}
+
+.window-main-col--description__heading {
+  /* padding: 0.5rem 0; */
+}
+
+.window-main-col--description__text {
+  margin: 0.5rem 0;
+}
+
+.main-col-description {
+  width: 100%;
+  height: 75px;
+  background-color: #eaecef;
+  padding: 1rem 0.5rem;
+  cursor: pointer;
+}
+
+.checklist-progress-bar {
+  height: 0.5rem;
+  background-color: #e1e4e9;
+}
+
+.window-body {
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+
+.window-header {
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.window-main-col,
+.window-side-col {
+  margin: 1.5rem;
+}
+
+.window-body {
+  margin: 1rem 0;
+}
+
+.textarea-comment-box {
+  padding: 0.25rem;
+  width: 100%;
+  border: none;
+  box-shadow: grey;
+  outline: none;
+  resize: none;
+  overflow: hidden;
+}
+
+.textarea-comment-box:active {
+  border-bottom: 1px solid #000;
+}
+
+.textarea-comment-box:focus {
+  border-bottom: 1px solid #000;
+}
+
+.textarea {
+  width: 600px;
+  padding: 0.5rem;
+  font-size: 24px;
+  font-weight: bold;
+  border: 2px solid blue;
+}
+
+.textarea:focus {
+  outline: none;
+}
+
+.side-bar-create-checklist {
+  width: 300px;
+  height: 225px;
+  margin: 0 auto;
+  z-index: 999;
+  outline: 1px solid #000;
+  background-color: #fff;
+}
+.create-checklist--header {
+  padding: 1rem;
+}
+
+.create-checklist--header-heading {
+  text-align: center;
+  padding: 0.5rem;
+}
+
+
+.main-col--checklist--controls {
+
+}

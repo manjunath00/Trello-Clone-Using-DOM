@@ -1,5 +1,7 @@
+const APIKey = "e1df66f563cbe54aed8edd3a57aea366";
+const token =
+  "18f3ad6bb43cabb2f2238e2c844c2e5fe40efd95b64ada53eba8812f51be6422";
 
-  
 const board = document.getElementById("board");
 
 const domain = `https://api.trello.com`;
