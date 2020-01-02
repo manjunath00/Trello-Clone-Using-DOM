@@ -1,2 +1,2 @@
 console.log('started ')
-getAllLists();
+// getAllLists();

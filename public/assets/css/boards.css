@@ -6,15 +6,30 @@
   padding: 0.25rem 0;
   opacity: 0.95;
 }
+.boards__container {
+  background-color: #4bbf6b;
+}
+
+.onModal {
+  opacity: 0.6;
+  background-color: #000;
+}
+
 * {
-    /* outline: 1px solid #000; */
+  /* outline: 1px solid #000; */
+  box-sizing: border-box;
 }
 .boards__header-left,
 .boards__header-right {
   display: flex;
 }
 
-.board__header-center-icon {   
+.boards__header {
+  width: 100%;
+  /* position: fixed; */
+}
+
+.board__header-center-icon {
   color: #fff;
   background-color: #fff;
   opacity: 1;
@@ -22,28 +37,25 @@
   height: 30px;
 }
 
-.board__header-center-icon img{   
+.board__header-center-icon img {
   height: 30px;
-  opacity: .4;
+  opacity: 0.4;
 }
 
-.boards__list { 
-    width: 1080px;
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-    color: #000; 
-    margin: 2rem auto;
+.boards__list {
+  margin: 0 auto;
+  color: #000;
+  margin: 2rem auto;
 }
 
 .section__board--heading {
-    font-weight: bold;
-    
+  font-weight: bold;
+  margin: 1rem;
 }
 
 .section__boards__list {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+  display: flex;
+  overflow-x: scroll;
 }
 
 .section__board {
@@ -54,7 +66,7 @@
   background-color: #44a35b;
   padding: 0.5rem;
   font-weight: bold;
-  margin: .5rem;
+  margin: 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -63,7 +75,7 @@
 }
 
 .section__board--name {
-    color: #fff;
+  color: #fff;
 }
 
 .section__board--star {
@@ -71,10 +83,49 @@
   transition-timing-function: ease-out;
   transition-property: visibility;
   transition-duration: 3s;
-  transition-delay: 0.1s; 
+  transition-delay: 0.1s;
   /* opacity: 0.2; */
 }
 
 .section__board:hover .section__board--star {
   visibility: visible;
+}
+
+/* list styling */
+.list-name {
+  font-weight: bold;
+  background-color: #ebecf0; 
+  padding: 1rem; 
+  z-index: 400;
+  margin: 0 auto;
+}
+
+.list-container {
+  min-width: 300px;
+  background-color: #ebecf0;
+  margin: 0.25rem;
+  max-height: 85vh;
+  border-radius: 5px;
+  overflow: scroll;
+}
+
+.card-container {
+  background-color: #fff;
+  margin: 0.5rem 0.25rem;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.card-detail-window {
+  position: fixed;
+  top: 0;
+  transform: translate(70%, 0);
+  margin: 0 auto;
+  opacity: 1;
+  background-color: #fefefe;
+  outline: 1px solid #000;
+  width: 770px;
+  min-height: 800px;
+  margin: 2rem auto;
+  z-index: 999;
 }
