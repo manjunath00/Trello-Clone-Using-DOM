@@ -55,7 +55,7 @@
 
 .section__boards__list {
   display: flex;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
 .section__board {
@@ -106,7 +106,7 @@
   margin: 0.25rem;
   max-height: 85vh;
   border-radius: 5px;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .card-container {

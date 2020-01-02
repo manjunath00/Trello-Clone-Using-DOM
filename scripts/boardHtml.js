@@ -48,11 +48,11 @@ const createAList = function(list) {
   anchor.textContent = name;
   anchor.setAttribute("href", "#");
   // anchor.addEventListener("click", getAllCards, false);
-  
+
   appendToParent(anchor, listName);
   appendToParent(listName, listContainer);
   appendToParent(listContainer, boardsList);
-  postACard(id)
+  postACard(id);
 };
 
 const createACard = function(card) {

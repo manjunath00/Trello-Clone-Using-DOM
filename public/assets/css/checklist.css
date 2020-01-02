@@ -1,15 +1,9 @@
-.modal--container {
-  background-color: #000;
-  overflow: scroll;
-}
+
 
 .hidden {
   display: none !important;
 }
 .card-detail-window {
-  width: 770px;
-  min-height: 800px;
-  background-color: #f4f5f7;
   margin: 2rem auto;
   /* overflow: scroll; */
 }
@@ -25,10 +19,7 @@
   font-weight: bold;
 }
 
-.window-header-icon {
-  /* width: 250px; */
-  /* height: 250px;  */
-}
+ 
 .window-header {
   margin: 1rem 0;
 }

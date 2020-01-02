@@ -6,7 +6,6 @@ const token =
 const createsElement = function(type, classListArray, text = "") {
   const element = document.createElement(type);
   element.textContent = text;
-  //   element.className = "a";
   if (classListArray.length) {
     classListArray.forEach(classI => {
       element.className += " " + classI;
@@ -18,6 +17,6 @@ const createsElement = function(type, classListArray, text = "") {
 
 // function to append child to parent
 const appendToParent = function(child, parent) {
-  parent.append(child);
+  parent.appendChild(child);
   return parent;
 };
