@@ -138,7 +138,7 @@ const spostACheckList = async function(body) {
   }).then(function(response) {
     console.log(response);
     if (response.ok) {
-      console.log(response); 
+      // console.log(response); 
       removeModal() 
       getAModal();
     }
@@ -160,7 +160,7 @@ const spostACheckItem = async function(checkListId, body) {
   }).then(function(response) {
     console.log(response);
     if (response.ok) {
-      console.log(response);
+      // console.log(response);
       removeModal();
       getAModal();
     }

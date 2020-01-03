@@ -23,12 +23,12 @@ const createsModalHeader = function(heading) {
 
   const windowHeaderTitle = createsElement("div", ["flex"]);
   const cardDetailHeading = createsElement("div", ["card-detail-heading"]);
-  cardDetailHeading.addEventListener("click", editableForm);
   const modalDetailHeading = createsElement(
     "h2",
     ["modal-card-heading"],
     heading
-  );
+    );
+    modalDetailHeading.addEventListener("click", editableForm);
 
   appendToParent(modalDetailHeading, cardDetailHeading);
   appendToParent(cardDetailHeading, windowHeaderTitle);
@@ -175,7 +175,25 @@ const createModalDescription = function() {};
 
 const editableForm = function(e) {
   const val = this.textContent;
+  this.classList.add("hidden")
+  const form = createsElement("form", ["forms"]);
+  const input = createsElement("input", ["input-bar", "heading", "textarea"]);
+  input.addEventListener('focusout', function (e) {
+    const heading = document.querySelector(".modal-card-heading")
+    heading.textContent = input.value;
+    console.log(input.value)
+    heading.classList.toggle("hidden")
+    input.classList.toggle("hidden")
+  })
+  input.setAttribute("value", val);
+  appendToParent(input, form);
+
+  const container = document.querySelector(".card-detail-heading");
+  appendToParent(form, container)
+  // console.log(val);
 };
+
+
 
 const checklistImp = function(checklistId) {
   const mainCol = document.querySelector(".main-col");
