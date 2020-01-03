@@ -21,13 +21,13 @@ const createsModalHeader = function(heading) {
   const container = document.querySelector(".modal-container");
   const windowHeader = document.querySelector(".window-header");
 
-  const windowHeaderTitle = createsElement("div", [ "flex"]);
+  const windowHeaderTitle = createsElement("div", ["flex"]);
   const cardDetailHeading = createsElement("div", ["card-detail-heading"]);
   cardDetailHeading.addEventListener("click", editableForm);
   const modalDetailHeading = createsElement(
     "h2",
     ["modal-card-heading"],
-    headingit
+    heading
   );
 
   appendToParent(modalDetailHeading, cardDetailHeading);
@@ -62,11 +62,115 @@ const sideAddCheckList = function() {
   appendToParent(checklist, sideColumn);
 };
 
-const sideCreateCheckList = function (e) {
-  console.log('side checklist will be created')
-}
+const closeTheChecklist = function(e) {
+  const sideCol = document.querySelector(".side-col");
+  const sideClContainer = document.querySelector(".side-cl-container");
+  sideCol.removeChild(sideClContainer);
+};
 
+const submitChecklist = function(e) {
+  console.log("submit clicked", e);
+  const addToCard = document.querySelector(".side-cl-container");
+  addToCard.classList.add("hidden");
+  const checkListName = document.querySelector(".checklist-form").value;
+  const body = {
+    idCard: allIds["cardId"],
+    name: checkListName
+  };
 
+  spostACheckList(body);
+};
+
+// shows pops and and asks checklist name
+const sideCreateCheckList = function(e) {
+  console.log("side checklist will be created");
+  const sideCol = document.querySelector(".side-col");
+  const container = createsElement("div", ["side-cl-container"]);
+
+  const header = createsElement("div", ["flex"]);
+  const add = createsElement("div", ["side-cl-heading"], "Add An Checklist");
+  const close = createsElement("button", ["grey-btn"], "x");
+  close.addEventListener("click", closeTheChecklist);
+  appendToParent(add, header);
+  appendToParent(close, header);
+  appendToParent(header, container);
+
+  const form = createsElement("form", ["forms"]);
+  const input = createsElement("input", ["input-bar", "checklist-form"]);
+  input.setAttribute("type", "text");
+  input.setAttribute("required", "true");
+  const btn = createsElement("button", ["add"], "Add");
+  btn.addEventListener("click", submitChecklist);
+  appendToParent(input, form);
+  appendToParent(btn, form);
+
+  appendToParent(form, container);
+  appendToParent(container, sideCol);
+
+  console.log("Side list creaed");
+};
+
+// to collect the value from form value & submit it to post request
+const postACheckItem = function(e) {
+  // body { id : checklistId, name: checklistName}
+
+  const name = document.querySelector(".input-bar-checkItem").value;
+  const parent =
+    e.target.parentNode.parentNode.parentNode.parentNode.parentNode.id;
+  allIds["checkListId"] = parent;
+  const body = {id: allIds["checkListId"], name : name};
+  spostACheckItem(parent, body);
+  console.log(name);
+  console.log(parent);
+};
+
+// adds an item
+const addsAnItem = function(e) {
+  const id = e.target.parentNode.parentNode.id;
+  this.classList.toggle("hidden");
+  const checkListContainer = document.getElementById(id);
+  const footerContainer = checkListContainer.children[2];
+  // console.log(footerContainer);
+
+  const container = createsElement("div", ["form-container"]);
+
+  const form = createsElement("form", ["forms"]);
+  const input = createsElement("input", ["input-bar-checkItem", "input-bar"]);
+  input.setAttribute("type", "text");
+  input.setAttribute("required", true);
+  appendToParent(input, form);
+
+  const btnBar = createsElement("div", ["btnBar"]);
+  const addBtn = createsElement(
+    "button",
+    ["grey-btn", "green"],
+    "Add an checkitem"
+  );
+  addBtn.addEventListener("click", postACheckItem);
+  const closeBtn = createsElement("button", ["btn-close"], "x");
+  appendToParent(addBtn, btnBar);
+  appendToParent(closeBtn, btnBar);
+  appendToParent(btnBar, form);
+
+  appendToParent(form, container);
+  appendToParent(container, footerContainer);
+};
+
+// add an item to the checklist
+const addAnCheckListItem = function(checkListId) {
+  const checkListAdd = createsElement("div", ["checklist-add-item"]);
+  const createsABtn = createsElement(
+    "button",
+    ["grey-btn", "checklist-add"],
+    "Add an Item"
+  );
+  createsABtn.addEventListener("click", addsAnItem);
+  appendToParent(createsABtn, checkListAdd);
+  const container = document.getElementById(checkListId);
+  appendToParent(checkListAdd, container);
+};
+
+// close the checklist window
 const createModalDescription = function() {};
 
 const editableForm = function(e) {
@@ -127,17 +231,19 @@ const checkListItem = function(item) {
   const inputDiv = createsElement("div", ["todo-checkbox"]);
   const input = createsElement("input", ["checkbox"]);
   input.setAttribute("type", "checkbox");
-  if (state === "complete") {
-    input.setAttribute("checked", true);
-  } else {
-    // input.setAttribute("checked", false);
-  }
   appendToParent(input, inputDiv);
 
   const todoText = createsElement("div", ["todo-text"], name);
   const del = createsElement("div", ["todo-action"]);
-  const delBtn = createsElement("button", ["del"], "X");
+  const delBtn = createsElement("button", ["del", "hidden"], "X");
   appendToParent(delBtn, del);
+
+  if (state === "complete") {
+    input.setAttribute("checked", true);
+    checkListItem.classList.add("completed");
+  } else {
+    // input.setAttribute("checked", false);
+  }
 
   appendToParent(inputDiv, checkListItem);
   appendToParent(todoText, checkListItem);
@@ -174,10 +280,10 @@ const createAChecklist = function(list) {
   const checklist = checklistImp(id);
   const header = checklistHeader(name, id);
   const body = checkListBody(checkItems);
+  addAnCheckListItem(id);
 };
 
-// window.addEventListener("DOMContentLoaded", function(e) {
-//   console.log("Dom content fully loaded");
-//   addItToThePage();
-// });
+// window.addEventListener("click", function(e) {
+//   console.log(e);
 
+// });

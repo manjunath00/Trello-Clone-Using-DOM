@@ -1,12 +1,21 @@
 const allIds = {
-  boardId: ""
+  boardId: "",
+  cardId: "",
+  checkListId : ""
 };
+
+const removeModal = function () {
+  const body = document.querySelector('body');
+  const modal = document.querySelector('.modal-container');
+  body.removeChild(modal);
+}
 
 const regenDOM = function() {
   const container = document.querySelector(".section__boards__list");
 
+
   while (container.hasChildNodes()) {
-    container.removeChild(container.lastChild);
+    container.removeChild(container.lastChild); 
   }
 };
 
@@ -67,7 +76,10 @@ const createACard = function(card) {
   const anchor = document.createElement("a");
   anchor.textContent = name;
   anchor.setAttribute("href", "#");
-  anchor.addEventListener("click", getAModal, false);
+  anchor.addEventListener("click", function (e) {
+    allIds["cardId"] = e.target.parentNode.parentNode.id;
+    getAModal()
+  }, false);
 
   appendToParent(anchor, cardName);
   appendToParent(cardName, cardContainer);

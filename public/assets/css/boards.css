@@ -28,6 +28,31 @@
   width: 100%;
   /* position: fixed; */
 }
+body {
+  background-color: #4bbf6b;
+
+}
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+  font-style: italic;
+}
+
+.btn-close {
+  margin: 0 .25rem;
+  padding: 0.5rem;
+  border: none;
+  color: blue;
+}
+
+.add {
+  background-color: green;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
 
 .board__header-center-icon {
   color: #fff;
@@ -94,8 +119,8 @@
 /* list styling */
 .list-name {
   font-weight: bold;
-  background-color: #ebecf0; 
-  padding: 1rem; 
+  background-color: #ebecf0;
+  padding: 1rem;
   z-index: 400;
   margin: 0 auto;
 }
@@ -107,13 +132,25 @@
   max-height: 85vh;
   border-radius: 5px;
   overflow: auto;
+  height: fit-content;
+  padding-bottom: 1rem;
+  cursor: pointer;
 }
 
 .card-container {
   background-color: #fff;
-  margin: 0.5rem 0.25rem;
+  margin: 0.5rem 0.75rem;
   padding: 1rem;
   border-radius: 5px;
+  box-shadow: 0 1px 0 rgba(9,30,66,.25);
+}
+
+.controls-container {
+  margin: 0.25rem;
+}
+
+.create-card-container {
+  padding: 0 0.25rem;
 }
 
 .card-detail-window {

@@ -29,8 +29,18 @@ const postReq = {
   },
   postACard: function() {
     return `${domain}/1/cards?${apiAccess}`;
+  },
+  postACheckList: function() {
+    // https://api.trello.com/1/checklists
+    return `${domain}/1/checklists?${apiAccess}`;
+  },
+  postACheckItem: function(checklistId) {
+    // /checklists/{id}/checkItems
+    return `${domain}/1/checklists/${checklistId}/checkItems?name=name&pos=bottom&checked=false&${apiAccess}`;
   }
 };
+
+//   --url 'https://api.trello.com/1/checklists/id/checkItems?name=name&pos=bottom&checked=false&key=yourApiKey&token=yourApiToken'
 
 const getsAllBoardsFunc = async function() {
   const boards = await fetch(urls.getAllBoards).then(cur => cur.json());
@@ -57,21 +67,19 @@ const getAllCards = async function(listId) {
 const getCheckItems = async function(checkListId) {
   const url = urls.getCheckLists(checkListId);
   const checklists = await fetch(url).then(checklist => checklist.json());
-  createAChecklist(checklists);
-  // console.log(checklists);
+  createAChecklist(checklists); 
 
   return checklists;
 };
 
-const getAModal = async function(e) {
-  const cardId = e.target.parentNode.parentNode.id;
+const getAModal = async function () {
+  const cardId = allIds["cardId"]
+  // const cardId = e.target.parentNode.parentNode.id;
   const cardInfo = await fetch(urls.getAModal(cardId)).then(card =>
     card.json()
   );
   const { idChecklists } = cardInfo;
-  const allChecklists = idChecklists.map(id => getCheckItems(id));
-  // console.log(idChecklists);
-  // console.log(allChecklists);
+  const allChecklists = idChecklists.map(id => getCheckItems(id)); 
   console.log(cardInfo);
   createAModal(cardInfo);
 };
@@ -114,6 +122,49 @@ const spostACard = async function(body) {
       getAllLists(allIds["boardId"]);
     }
     return response.json();
+  });
+};
+
+const spostACheckList = async function(body) {
+  const url = postReq.postACheckList();
+  const createCheckList = await fetch(url, {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify(body)
+  }).then(function(response) {
+    console.log(response);
+    if (response.ok) {
+      console.log(response); 
+      removeModal() 
+      getAModal();
+    }
+    return response.json();
+  });
+};
+
+const spostACheckItem = async function(checkListId, body) {
+  const url = postReq.postACheckItem(checkListId);
+  // body { id : checklistId, name: checklistName}
+  const createCheckItem = await fetch(url, {
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify(body)
+  }).then(function(response) {
+    console.log(response);
+    if (response.ok) {
+      console.log(response);
+      removeModal();
+      getAModal();
+    }
+    // return response.json();
   });
 };
 

@@ -22,6 +22,9 @@
   grid-template-columns: 50px auto 50px;
   padding: 0.5rem 0.35rem;
 }
+.boards__list {
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.05)
+}
 
 .side-col {
     padding: 1rem;
@@ -32,4 +35,18 @@
     text-transform: uppercase;
     font-size: 0.75rem;
     margin: 0.5rem 0;
+}
+
+.side-cl-heading {
+    padding: 0.5rem 0;
+}
+
+.side-cl-container  {
+    margin: 0.5rem;
+    /* padding: 0.5rem; */
+}
+
+
+.checklistItem:hover .del {
+    visibility: visible;
 }
